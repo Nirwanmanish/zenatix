@@ -1,0 +1,84 @@
+E-commerce Store API
+This is a Django web application that provides REST APIs for a fictional e-commerce store. The application supports two types of user roles: Admin and Customer. The APIs allow users to manage products, inventory, orders, and user accounts.
+
+Prerequisites
+Python 3.6 or above
+Django 3.2 or above
+Django Rest Framework 3.12 or above
+PostgreSQL/SQLite/MySQL database
+
+Create and activate a virtual environment:
+python3 -m venv env
+source env/bin/activate
+
+Install the dependencies:
+pip install -r requirements.txt
+
+Configure the database:
+Open the ecommerce_store/settings.py file.
+Locate the DATABASES section.
+Update the database settings according to your configuration (e.g., database engine, name, user, password).
+
+Apply database migrations:
+python manage.py migrate
+
+Start the development server:
+python manage.py runserver
+
+The API server will start running on http://localhost:8000/.
+
+API Endpoints
+The following are the available API endpoints:
+
+Admin APIs
+Manage Products:
+
+GET /products/: Get a list of all products.
+POST /products/: Create a new product.
+GET /products/<int:pk>/: Retrieve details of a specific product.
+PUT /products/<int:pk>/: Update details of a specific product.
+DELETE /products/<int:pk>/: Delete a specific product.
+Manage Users:
+
+GET /users/: Get a list of all users.
+POST /users/: Create a new user.
+GET /users/<int:pk>/: Retrieve details of a specific user.
+PUT /users/<int:pk>/: Update details of a specific user.
+DELETE /users/<int:pk>/: Delete a specific user.
+Manage Orders:
+
+GET /orders/: Get a list of all orders.
+POST /orders/: Create a new order.
+GET /orders/<int:pk>/: Retrieve details of a specific order.
+PUT /orders/<int:pk>/: Update details of a specific order.
+DELETE /orders/<int:pk>/: Delete a specific order.
+Customer APIs
+Product Listing:
+
+GET /products/: Get a list of all available products.
+User Registration:
+
+POST /users/: Create a new user.
+User Authentication:
+
+POST /api/token/: Obtain a JSON Web Token (JWT) for authentication.
+Cart Functionality:
+
+POST /cart/: Add a product to the cart.
+GET /cart/: Get the contents of the cart.
+PUT /cart/: Update the quantities of products in the cart.
+DELETE /cart/: Remove a product from the cart.
+Order Placement:
+
+POST /orders/: Place an order for the items in the cart.
+Order History:
+
+GET /orders/: Get a list of all orders placed by the user.
+Authentication
+Authentication is required for certain APIs. To authenticate, include the JWT token in the Authorization header of the request. The token can be obtained by making a POST request to /api/token/ with valid user credentials.
+POST /api/token/
+
+{
+    "username": "admin",
+    "password": "password123"
+}
